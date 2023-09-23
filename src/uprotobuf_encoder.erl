@@ -18,7 +18,7 @@
 % SPDX-License-Identifier: Apache-2.0
 %
 
--module(uprotobuf_enc).
+-module(uprotobuf_encoder).
 -export([encode/2]).
 
 -define(LEN_TAG, 2).

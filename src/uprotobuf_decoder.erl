@@ -18,7 +18,7 @@
 % SPDX-License-Identifier: Apache-2.0
 %
 
--module(uprotobuf_dec).
+-module(uprotobuf_decoder).
 -export([parse/2, transform_schema/1]).
 
 transform_schema(Schema) ->
