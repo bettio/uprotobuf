@@ -1,3 +1,9 @@
+%
+%  Copyright 2023 Davide Bettio <davide@uninstall.it>
+%
+%  SPDX-License-Identifier: Apache-2.0
+%
+
 {application, uprotobuf,
  [{description, "μ protocol buffers library."},
   {vsn, "0.1.0"},
