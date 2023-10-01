@@ -120,5 +120,10 @@ cast(Value, bytes) ->
     Value;
 cast(Value, string) ->
     Value;
+cast(Value, bool) ->
+    case Value of
+        0 -> false;
+        1 -> true
+    end;
 cast(Value, Proto) when is_map(Proto) ->
     parse(Value, Proto).
