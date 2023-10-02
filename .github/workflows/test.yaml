@@ -1,3 +1,9 @@
+#
+#  Copyright 2023 Davide Bettio <bettio@uninstall.it>
+#
+#  SPDX-License-Identifier: Apache-2.0
+#
+
 name: Test
 on: [push, pull_request]
 
