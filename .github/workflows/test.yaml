@@ -22,3 +22,5 @@ jobs:
           rebar3-version: ${{matrix.rebar3}}
       - name: Compile
         run: rebar3 compile
+      - name: Test
+        run: rebar3 eunit
