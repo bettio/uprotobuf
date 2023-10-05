@@ -27,7 +27,7 @@ decode_varint_test() ->
         a => {1, int32}
     },
     DecoderSchema = uprotobuf_decoder:transform_schema(Schema),
-    ?assertEqual(uprotobuf_decoder:parse(<<16#08, 16#96, 16#01>>, DecoderSchema), #{a => 150}).
+    ?assertEqual(#{a => 150}, uprotobuf_decoder:parse(<<16#08, 16#96, 16#01>>, DecoderSchema)).
 
 decode_string_test() ->
     Schema = #{
