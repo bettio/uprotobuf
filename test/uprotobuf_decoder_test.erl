@@ -50,3 +50,18 @@ decode_submsg_test() ->
         #{c => #{a => 150}},
         uprotobuf_decoder:parse(<<16#1A, 16#03, 16#08, 16#96, 16#01>>, DecoderSchema)
     ).
+
+decode_int32_string_int32_message_test() ->
+    Encoded =
+        <<16#10, 16#05, 16#1A, 16#0B, 16#48, 16#65, 16#6C, 16#6C, 16#6F, 16#20, 16#57, 16#6F, 16#72,
+            16#6C, 16#64, 16#20, 16#C5, 16#0F>>,
+    Schema = #{
+        b => {2, int32},
+        c => {3, string},
+        d => {4, int32}
+    },
+    DecoderSchema = uprotobuf_decoder:transform_schema(Schema),
+    ?assertEqual(
+        #{b => 5, c => <<"Hello World">>, d => 1989},
+        uprotobuf_decoder:parse(Encoded, DecoderSchema)
+    ).
