@@ -22,6 +22,39 @@
 
 -include_lib("eunit/include/eunit.hrl").
 
+transform_schema_test() ->
+    Schema = #{
+        a => {1, int32},
+        b =>
+            {2, #{
+                c => {1, fixed32},
+                d =>
+                    {2,
+                        {enum, #{
+                            "FIRST" => 1,
+                            "SECOND" => 2,
+                            "THIRD" => 3
+                        }}}
+            }},
+        c => {3, string}
+    },
+    ExpectedSchema = #{
+        1 => {a, int32},
+        2 =>
+            {b, #{
+                1 => {c, fixed32},
+                2 =>
+                    {d,
+                        {enum, #{
+                            1 => "FIRST",
+                            2 => "SECOND",
+                            3 => "THIRD"
+                        }}}
+            }},
+        3 => {c, string}
+    },
+    ?assertEqual(ExpectedSchema, uprotobuf_decoder:transform_schema(Schema)).
+
 decode_varint_test() ->
     Schema = #{
         a => {1, int32}
