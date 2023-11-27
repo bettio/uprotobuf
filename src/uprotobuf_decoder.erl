@@ -114,6 +114,8 @@ cast(<<Value:32/integer-little-unsigned>>, fixed32) ->
     Value;
 cast(<<Value:32/integer-little-signed>>, sfixed32) ->
     Value;
+cast(<<Value:32/float-little>>, float) ->
+    Value;
 cast(Value, undefined) ->
     Value;
 cast(Value, bytes) ->
