@@ -38,6 +38,8 @@ encode({K, V, I}, Schema, Acc) ->
 encode_field(FieldNum, V, bytes) ->
     Len = erlang:iolist_size(V),
     [encode_varint((FieldNum bsl 3) bor ?LEN_TAG), encode_varint(Len), V];
+encode_field(FieldNum, V, string) ->
+    encode_field(FieldNum, V, bytes);
 encode_field(FieldNum, V, {enum, LabelsToInt}) ->
     IntVal = maps:get(V, LabelsToInt),
     [encode_varint(FieldNum bsl 3), encode_varint(IntVal)];
